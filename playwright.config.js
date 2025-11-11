@@ -2,16 +2,16 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 30_000,
+  timeout: 30000,
   use: {
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://localhost:3000',
     headless: true,
-    viewport: { width: 1280, height: 720 }
+    viewport: { width: 1280, height: 720 },
   },
   webServer: {
-    command: 'npx http-server ./pages -p 3000',
+    command: 'npx serve pages',
     port: 3000,
+    timeout: 120000,
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000
-  }
+  },
 });
